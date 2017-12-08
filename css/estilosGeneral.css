@@ -1,0 +1,63 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06-dic-2017, 21:01:12
+    Author     : Raquel
+*/
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+html{
+
+    font-family: 'Amatic SC'!important;
+}
+
+body{
+        background-color: AAB1B0;
+}
+
+
+.contenedorInicio{
+    margin-top: 10%;
+}
+
+.contenedorTemas{
+    margin-top: 100px;
+}
+
+.cuerpoPreguntas{
+    margin-top: 10%;
+}
+
+#selectorNivel{
+    margin-top: 20px;
+    align-content: center;
+}
+
+#botoneraNiveles{
+     display: flex;
+      justify-content: center;
+}
+
+.btn-seleccion{
+        color: #fff;
+    background-color: #6CA6CD;
+    border-color: #6CA6CD;
+}
+
+.btn-nivel{
+        color: #fff;
+    background-color: #933B34;
+    border-color: #933B34;
+}
+
+.btn-preguntas{
+        color: #fff;
+    background-color: #6F792B;
+    border-color: #6F792B;
+}
+#preguntaTema{
+    margin-top: 20px;
+    font-weight: bold;
+}
