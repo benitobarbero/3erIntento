@@ -61,19 +61,22 @@ and open the template in the editor.
 
                 </div>
                 
-                <div id="selectorNivel">
+               <div id="selectorNivel">
                     <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-5">
-                            <h3>Escoja su nivel</h3><br>
-                            <button class="btn btn-info" onclick = "jugarNivel(10)">1</button>
-                            <button class="btn btn-info" onclick = "jugarNivel(20)">2</button>
-                            <button class="btn btn-info" onclick = "jugarNivel(30)">3</button>
-                            <button class="btn btn-info" onclick = "jugarNivel(40)">4</button>
-                            
+                        <div class="col-md-12">
+                            <h3 class="text-center" id="textoSelectorNiveles">Escoja su nivel</h3><br>
+                            <div id="botoneraNiveles" class="btn-group center-block">
+                            <button class="btn btn-nivel" onclick = "jugarNivel(10)">1</button>
+                            <button class="btn btn-nivel" onclick = "jugarNivel(20)">2</button>
+                            <button class="btn btn-nivel" onclick = "jugarNivel(30)">3</button>
+                            <button class="btn btn-nivel" onclick = "jugarNivel(40)">4</button>
+                             </div>
                         </div>
-                        <div class="col-md-3"></div>
+                       
                     </div>
+                    <div id="botonPanico" class="row">
+                            <button class="btn btn-nivel" onclick = "location='../seleccionTemas.html'">Me arrepiento, volver al menu de seleccion</button>
+                        </div>
                 </div>
 
 
@@ -145,10 +148,10 @@ and open the template in the editor.
             
             $('#cuerpoTema').html("");
             
-            $('#cuerpoTema').append('<button id="boton01" class="btn btn-warning btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][1]  + ' </button> ');
-            $('#cuerpoTema').append('<button id="boton02" class="btn btn-warning btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][2]  + ' </button> ');
-            $('#cuerpoTema').append('<button id="boton03" class="btn btn-warning btn-block " style="width: 100%; height: 100%;">' +  preguntasIngles[siguiente][3] + ' </button> ');
-            $('#cuerpoTema').append('<button id="boton04" class="btn btn-warning btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][4] + ' </button> ');
+            $('#cuerpoTema').append('<button id="boton01" class="btn btn-preguntas btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][1]  + ' </button> ');
+            $('#cuerpoTema').append('<button id="boton02" class="btn btn-preguntas btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][2]  + ' </button> ');
+            $('#cuerpoTema').append('<button id="boton03" class="btn btn-preguntas btn-block " style="width: 100%; height: 100%;">' +  preguntasIngles[siguiente][3] + ' </button> ');
+            $('#cuerpoTema').append('<button id="boton04" class="btn btn-preguntas btn-block " style="width: 100%; height: 100%;">' + preguntasIngles[siguiente][4] + ' </button> ');
             
              $('#preguntaTema').html("");
             $('#preguntaTema').append('<p class="text-center">'+preguntasIngles[siguiente][0]+'</p>');
