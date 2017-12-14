@@ -36,6 +36,8 @@ and open the template in the editor.
                 <div class="cabeceraTema text-center" >
 
                     <h1>PREGUNTAS DE ECONOMIA</h1>
+                    
+                    <!--     barra de temporizador                -->
                    
                     <div id="barraTiempo" class="progress">
                       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
@@ -47,15 +49,16 @@ and open the template in the editor.
                    
                    
                    
-                   
+                    <!--    Contador de vidas y de puntos           -->
                    <br/>
                    <div id="contadorPuntos" class="col-md-3" style="float: left;"></div>
                    <div id="contadorVidas" class="col-md-3" style="float: right;"></div>
                   
                 </div>
                 <br>
+                 <!--     Aqui cargamos la pregunta              -->
                 <div id="preguntaTema" class=" text-center"> <br/>  </div><br>
-
+                <!--    Aqui las respuestas             -->
                 <div id="cuerpoTema" ><br>
                     
 
@@ -98,16 +101,18 @@ and open the template in the editor.
         
         
          <script>
-    var siguiente;
-    var numeroCaja; 
-    var contador = 0; 
-    var vidas = 5;
-     var i = 100;
-    var counterBack;
-    var nivelActual;
+             
+             //Declaramos las variables
+            var siguiente;
+            var numeroCaja; 
+            var contador = 0; 
+            var vidas = 5;
+             var i = 100;
+            var counterBack;
+            var nivelActual;
     
     
-    
+    //Cargamos el nivel que nos han pulsado en la botonera
     function jugarNivel(nivel){
         nivelActual=nivel;
         jugar();
@@ -115,11 +120,12 @@ and open the template in the editor.
     
     function jugar(){
         
-        
+             //Muestra la pantalla de muerte
         if(vidas==0){
             $('#cuerpoJuego').html('<h1 class="text-center">Has perdido</h1>');
             $('#cuerpoJuego').append('<button id="boton01" class="btn btn-warning btn-block " onclick = "location=\'../seleccionTemas.html\'" style="width: 100%; height: 100%;">' + 'VOLVER AL MENU'  + ' </button> ');
           
+          //Con esto mostramos la pantalla de ganar, cuando aciertas al menos 10 veces el numero de preguntas que hay en el nivel
         }if(contador==(nivelActual*10)){
             $('#cuerpoJuego').html('<h1 class="text-center">Mas o menos controlas el nivel, enhorabuena!</h1>');
             $('#cuerpoJuego').append('<button id="boton01" class="btn btn-warning btn-block " onclick = "location=\'../seleccionTemas.html\'" style="width: 100%; height: 100%;">' + 'VOLVER AL MENU'  + ' </button> ');
@@ -133,6 +139,7 @@ and open the template in the editor.
          i = 100;
          clearInterval(counterBack);
          $('#barraTiempo').html("");
+         //Actualizamos la barra de tiempo
            actualizaBarra();
            
            
@@ -145,8 +152,10 @@ and open the template in the editor.
     function ponRespuestas(){
           siguiente = Math.floor(Math.random() * nivelActual);
         
+        //Actualizamos la barra de tiempo
         actualizaBarra();
             
+            //Cargamos la pregunta y las posibles respuestas
             $('#cuerpoTema').html("");
             
             $('#cuerpoTema').append('<button id="boton01" class="btn btn-preguntas btn-block " style="width: 100%; height: 100%;">' + preguntasEconomia[siguiente][1].toString()  + ' </button> ');
@@ -157,7 +166,8 @@ and open the template in the editor.
              $('#preguntaTema').html("");
             $('#preguntaTema').append('<p class="text-center">'+preguntasEconomia[siguiente][0]+'</p>');
             
-            
+            //Al pulsar cada boton vamos a la funcion de comprueba
+            //Pasamos el boton pulsado por parametro
             $('#boton01').click( function(){
                 comprueba(1);
             });
@@ -173,7 +183,7 @@ and open the template in the editor.
             });
     }
     
- 
+ //funcion para resear la barra de tiempo /contador
     function actualizaBarra(){
 
         $('#barraTiempo').html('<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"><span class="sr-only"></span></div>');
@@ -181,6 +191,7 @@ and open the template in the editor.
                counterBack =  setInterval(function(){contadorTiempo()}, 300);
                
     }
+    //Funcion del contador de tiempo, cuando finaliza, resetea el intervalo
     function contadorTiempo(){
        
               i=i-1;
@@ -198,12 +209,13 @@ and open the template in the editor.
               
 
           
-            
+        //Nos muestra la puntuacion en la cabecera    
      function muestraContador(){
          $('#contadorPuntos').html(contador+" puntos");
          
      }
      
+     //Nos muestra el numero vidas disponible
      function contadorVidas(){
          var numCorazones="";
          for (var i=0; i<vidas; i++){
@@ -213,19 +225,22 @@ and open the template in the editor.
          $('#contadorVidas').html(numCorazones);
      }
      
+     //Aqui comprobamos si la respuesta es la correcta
      function comprueba(pulsado){
          
-         
+         //chequeamos si el botn pulsado, pasado por parametro coincide con el del array correcto
          if(pulsado === preguntasEconomia[siguiente][5]){
              contador=contador+10;
              $('#cuerpoTema').append('<button id="boton01" class="btn btn-success btn-block " style="width: 100%; height: 100%;">' + 'CORRECTO'  + ' </button> ');
            
          }else{
+             //Si no es así restamos vida
              vidas=vidas-1;
             $('#cuerpoTema').append('<button id="boton01" class="btn btn-danger btn-block " style="width: 100%; height: 100%;">' + 'INCORRECTO' + ' </button> ');
            
          }
          
+         //Reseamos de nuevo la barra de tiempo, hay que resetarla varias veces, por que si no, se iba acelerando cada vez
          var pregunta=setTimeout(function(){clearInterval(counterBack);jugar();},1000);
          
      }
